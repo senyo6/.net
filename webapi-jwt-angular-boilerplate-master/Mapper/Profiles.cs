@@ -13,6 +13,7 @@ namespace Mapper
             {
               new MovieProfile(),
               new ClientProfile(),
+              new TicketProfile()
             };
         }
     }
@@ -32,6 +33,15 @@ namespace Mapper
         {
             CreateMap<Client, ClientModel> ();
             CreateMap<ClientModel, Client> ();
+        }
+    }
+
+    public class TicketProfile : Profile
+    {
+        public TicketProfile ()
+        {
+            CreateMap<Ticket, TicketModel> ();
+            CreateMap<TicketModel, Ticket> ();
         }
     }
 }
