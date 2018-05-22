@@ -12,6 +12,7 @@ namespace Mapper
             return new List<Profile>
             {
               new MovieProfile(),
+              new ClientProfile(),
             };
         }
     }
@@ -22,6 +23,15 @@ namespace Mapper
         {
             CreateMap<Movie, MovieModel>();
             CreateMap<MovieModel, Movie>();
+        }
+    }
+
+    public class ClientProfile : Profile
+    {
+        public ClientProfile ()
+        {
+            CreateMap<Client, ClientModel> ();
+            CreateMap<ClientModel, Client> ();
         }
     }
 }
