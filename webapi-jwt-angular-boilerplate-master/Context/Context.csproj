@@ -72,7 +72,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Client.cs" />
+    <Compile Include="Entities\ClientTicket.cs" />
     <Compile Include="Entities\MovieType.cs" />
+    <Compile Include="Entities\Ticket.cs" />
     <Compile Include="Entities\TrackableEntity.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="IEntity.cs" />
