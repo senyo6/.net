@@ -81,7 +81,7 @@
     <Compile Include="Helpers\Tasty\TastyPagination.cs" />
     <Compile Include="Helpers\Tasty\TastyRequestWrapper.cs" />
     <Compile Include="Helpers\Tasty\TastyResponseWrapper.cs" />
-    <Compile Include="MoviesScopeLocator.cs" />
+    <Compile Include="FitnessScopeLocator.cs" />
     <Compile Include="Interface\IGenericRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

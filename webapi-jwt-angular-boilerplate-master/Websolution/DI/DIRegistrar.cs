@@ -36,7 +36,7 @@ namespace Websolution.DI
         public static void RegisterAmbientContext(ContainerBuilder builder)
         {
             builder.RegisterType<DbContextScopeFactory>().As<IDbContextScopeFactory>();
-            builder.RegisterType<MoviesScopeLocator>().As<IAmbientDbContextLocator>();
+            builder.RegisterType<FitnessScopeLocator>().As<IAmbientDbContextLocator>();
 
         }
     }

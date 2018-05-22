@@ -16,26 +16,26 @@ namespace Services.Implementation
         private readonly IMapper _mapper;
         private readonly IDbContextScopeFactory _contextScopeFactory;
 
-        public TicketService (ITicketRepository repository, IMapper mapper, IDbContextScopeFactory contextScopeFactory)
+        public TicketService(ITicketRepository repository, IMapper mapper, IDbContextScopeFactory contextScopeFactory)
         {
             _repository = repository;
             _mapper = mapper;
             _contextScopeFactory = contextScopeFactory;
         }
 
-        public IEnumerable<TicketModel> GetAll ()
+        public IEnumerable<TicketModel> GetAll()
         {
-            using (var scope = _contextScopeFactory.CreateReadOnly ())
+            using (var scope = _contextScopeFactory.CreateReadOnly())
             {
-                var objects = _repository.GetAllActive ().ToList ();
-                var TicketModels = _mapper.Map<List<TicketModel>> (objects);
+                var objects = _repository.GetAllActive().ToList();
+                var TicketModels = _mapper.Map<List<TicketModel>>(objects);
                 return TicketModels;
             }
         }
 
-        public TicketModel Add (TicketModel model)
+        public TicketModel Add(TicketModel model)
         {
-            using (var scope = _contextScopeFactory.Create ())
+            using (var scope = _contextScopeFactory.Create())
             {
                 var entity = new Ticket
                 {
@@ -46,8 +46,8 @@ namespace Services.Implementation
                     ValidityDayCount = model.ValidityDayCount,
                     Description = model.Description
                 };
-                _repository.Add (entity);
-                _repository.Save ();
+                _repository.Add(entity);
+                _repository.Save();
                 return new TicketModel
                 {
                     Id = entity.Id,
@@ -60,18 +60,18 @@ namespace Services.Implementation
             }
         }
 
-        public TicketModel Update (TicketModel model)
+        public TicketModel Update(TicketModel model)
         {
-            using (var scope = _contextScopeFactory.Create ())
+            using (var scope = _contextScopeFactory.Create())
             {
-                var entity = _repository.GetById (model.Id);
+                var entity = _repository.GetById(model.Id);
                 entity.Name = model.Name;
                 entity.Price = model.Price;
                 entity.EntryCount = model.EntryCount;
                 entity.ValidityDayCount = model.ValidityDayCount;
                 entity.Description = model.Description;
-                _repository.Edit (entity);
-                _repository.Save ();
+                _repository.Edit(entity);
+                _repository.Save();
                 return new TicketModel
                 {
                     Id = entity.Id,
@@ -84,20 +84,20 @@ namespace Services.Implementation
             }
         }
 
-        public void Delete (int id)
+        public void Delete(int id)
         {
-            using (var scope = _contextScopeFactory.Create ())
+            using (var scope = _contextScopeFactory.Create())
             {
-                _repository.Delete (id);
-                _repository.Save ();
+                _repository.Delete(id);
+                _repository.Save();
             }
         }
 
-        public TicketModel GetById (int id)
+        public TicketModel GetById(int id)
         {
-            using (var scope = _contextScopeFactory.CreateReadOnly ())
+            using (var scope = _contextScopeFactory.CreateReadOnly())
             {
-                var entity = _repository.GetById (id);
+                var entity = _repository.GetById(id);
                 return new TicketModel
                 {
                     Id = entity.Id,
