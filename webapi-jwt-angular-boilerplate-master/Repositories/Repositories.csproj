@@ -46,10 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementation\ClientTicketRepository.cs" />
     <Compile Include="Implementation\TicketRepository.cs" />
     <Compile Include="Implementation\ClientRepository.cs" />
     <Compile Include="Implementation\MovieRepository.cs" />
     <Compile Include="Implementation\MovieTypeRepository.cs" />
+    <Compile Include="Interface\IClientTicketRepository.cs" />
     <Compile Include="Interface\ITicketRepository.cs" />
     <Compile Include="Interface\IClientRepository.cs" />
     <Compile Include="Interface\IMovieRepository.cs" />

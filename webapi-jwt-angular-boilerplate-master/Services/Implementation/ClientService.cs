@@ -28,8 +28,8 @@ namespace Services.Implementation
             using (var scope = _contextScopeFactory.CreateReadOnly ())
             {
                 var objects = _repository.GetAllActive ().ToList ();
-                var ClientModels = _mapper.Map<List<ClientModel>> (objects);
-                return ClientModels;
+                var models = _mapper.Map<List<ClientModel>> (objects);
+                return models;
             }
         }
 
