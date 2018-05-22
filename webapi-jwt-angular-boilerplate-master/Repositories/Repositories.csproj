@@ -46,8 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementation\ClientRepository.cs" />
     <Compile Include="Implementation\MovieRepository.cs" />
     <Compile Include="Implementation\MovieTypeRepository.cs" />
+    <Compile Include="Interface\IClientRepository.cs" />
     <Compile Include="Interface\IMovieRepository.cs" />
     <Compile Include="Interface\IMovieTypeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
