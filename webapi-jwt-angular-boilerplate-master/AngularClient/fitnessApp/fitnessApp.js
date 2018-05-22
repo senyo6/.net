@@ -8,7 +8,8 @@
         'app.register',
         'app.login',
         'app.home',
-        'app.movies',
+        'app.clients',
+        'app.tickets',
         'app.directives'
     ]);
 

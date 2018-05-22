@@ -11,9 +11,9 @@
             })
 
             // route for the about page
-            .when('/movies', {
-                templateUrl: 'fitnessApp/movies/movies.template.html',
-                controller: 'MoviesController as vm'
+            .when('/cients', {
+                templateUrl: 'fitnessApp/cients/cients.template.html',
+                controller: 'ClientsController as vm'
             })
     })
 

@@ -1,0 +1,39 @@
+﻿<div class="jumbotron text-center">
+    <h1>Manage Clients</h1>
+</div>
+
+<div class="container" style="padding-bottom: 15px;">
+    <div class="col-md-12">
+        <button type="button" class="btn btn-primary" ng-click="vm.addClient()">Add new Client</button>
+        <table datatable="ng" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Email Address</th>
+                    <th>Addres</th>
+                    <th>Join Date</th>
+                    <th>Actions</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr ng-repeat="client in vm.clients">
+                    <td>{{client.name}}</td>
+                    <td>{{client.phoneNumber}}</td>
+                    <td>{{client.email}}</td>
+                    <td>{{client.address}}</td>
+                    <td>{{client.joinDate | date:'yyyy.M.dd'}}</td>
+                    <td>
+                        <button class="btn btn-danger" type="button" ng-click="vm.deleteClient(client.id)">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn-warning" type="button" ng-click="vm.editClient(client)">
+                            <i class="glyphicon glyphicon-edit" aria-hidden="true"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">{{vm.title}} ticket</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" ng-model="vm.ticket.name" />
+    </div>
+    <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="number" class="form-control" id="price" ng-model="vm.ticket.price">
+    </div>
+    <div class="form-group">
+        <label for="entryCount">Entry Count:</label>
+        <input type="number" class="form-control" id="entryCount" ng-model="vm.ticket.entryCount">
+    </div>
+    <div class="form-group">
+        <label for="validityDayCount">Validity Day Count:</label>
+        <input type="number" class="form-control" id="validityDayCount" ng-model="vm.ticket.validityDayCount">
+    </div>
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <input type="text" class="form-control" id="description" ng-model="vm.ticket.description">
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="vm.save()">SAVE</button>
+    <button class="btn btn-warning" type="button" ng-click="vm.cancel()">CANCEL</button>
+</div>

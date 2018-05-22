@@ -1,27 +1,27 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('app.movies')
-        .run(movieRoute);
+    angular.module('app.clients')
+        .run(clientRoute);
 
-    movieRoute.$inject = ['routerHelper'];
+    clientRoute.$inject = ['routerHelper'];
 
-    function movieRoute(routerHelper) {
+    function clientRoute(routerHelper) {
         routerHelper.configureStates(getStates());
     }
 
     function getStates() {
         return [
             {
-                state: 'movies',
+                state: 'clients',
                 config: {
-                    url: '/movies',
+                    url: '/clients',
                     parent: 'private',
-                    title: 'Movies',
+                    title: 'Clients',
                     views: {
                         'main-content': {
-                            templateUrl: 'fitnessApp/movies/movies.template.html',
-                            controller: 'MoviesController',
+                            templateUrl: 'fitnessApp/clients/clients.template.html',
+                            controller: 'ClientsController',
                             controllerAs: 'vm'
                         }
                     }

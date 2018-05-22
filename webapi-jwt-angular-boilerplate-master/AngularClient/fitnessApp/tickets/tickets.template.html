@@ -1,0 +1,39 @@
+﻿<div class="jumbotron text-center">
+    <h1>Manage Tickets</h1>
+</div>
+
+<div class="container" style="padding-bottom: 15px;">
+    <div class="col-md-12">
+        <button type="button" class="btn btn-primary" ng-click="vm.addTicket()">Add new Ticket</button>
+        <table datatable="ng" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Entry Count</th>
+                    <th>Validity Day Count</th>
+                    <th>description</th>
+                    <th>Actions</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr ng-repeat="ticket in vm.tickets">
+                    <td>{{ticket.name}}</td>
+                    <td>{{ticket.price}}</td>
+                    <td>{{ticket.entryCount}}</td>
+                    <td>{{ticket.validityDayCount}}</td>
+                    <td>{{ticket.description}}</td>
+                    <td>
+                        <button class="btn btn-danger" type="button" ng-click="vm.deleteTicket(ticket.id)">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn-warning" type="button" ng-click="vm.editTicket(ticket)">
+                            <i class="glyphicon glyphicon-edit" aria-hidden="true"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

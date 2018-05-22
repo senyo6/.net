@@ -54,6 +54,12 @@
     <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="fitnessApp\clients\dialog\clientDialog.controller.js" />
+    <Content Include="fitnessApp\clients\dialog\clientDialog.template.html" />
+    <Content Include="fitnessApp\clients\clients.controller.js" />
+    <Content Include="fitnessApp\clients\clients.module.js" />
+    <Content Include="fitnessApp\clients\clients.route.js" />
+    <Content Include="fitnessApp\clients\clients.template.html" />
     <Content Include="fitnessApp\home\home.module.js" />
     <Content Include="fitnessApp\home\home.route.js" />
     <Content Include="fitnessApp\landing\landing.controller.js" />
@@ -64,8 +70,6 @@
     <Content Include="fitnessApp\login\login.module.js" />
     <Content Include="fitnessApp\login\login.route.js" />
     <Content Include="fitnessApp\login\login.template.html" />
-    <Content Include="fitnessApp\movies\movies.module.js" />
-    <Content Include="fitnessApp\movies\movies.route.js" />
     <Content Include="fitnessApp\register\register.controller.js" />
     <Content Include="fitnessApp\register\register.module.js" />
     <Content Include="fitnessApp\register\register.route.js" />
@@ -85,10 +89,6 @@
     <Content Include="fitnessApp\fitnessApp.js" />
     <Content Include="fitnessApp\home\home.controller.js" />
     <Content Include="fitnessApp\home\home.template.html" />
-    <Content Include="fitnessApp\movies\dialog\movieDialog.controller.js" />
-    <Content Include="fitnessApp\movies\dialog\movieDialog.template.html" />
-    <Content Include="fitnessApp\movies\movies.controller.js" />
-    <Content Include="fitnessApp\movies\movies.template.html" />
     <Content Include="fitnessApp\shared\core\core.route.js" />
     <Content Include="fitnessApp\shared\core\core.run.js" />
     <Content Include="fitnessApp\shared\core\private.layout.template.html" />
@@ -96,10 +96,17 @@
     <Content Include="fitnessApp\shared\css\navbar.css" />
     <Content Include="fitnessApp\shared\directives\directives.module.js" />
     <Content Include="fitnessApp\shared\directives\passwordMatch.directive.js" />
-    <Content Include="fitnessApp\shared\images\movie.jpg" />
+    <Content Include="fitnessApp\shared\images\llama.jpg" />
     <Content Include="fitnessApp\shared\routing\router.config.js" />
     <Content Include="fitnessApp\shared\blocks\authentication\authentication.service.js" />
-    <Content Include="fitnessApp\shared\services\fitnessApp.service.js" />
+    <Content Include="fitnessApp\shared\services\client.service.js" />
+    <Content Include="fitnessApp\shared\services\ticket.service.js" />
+    <Content Include="fitnessApp\tickets\tickets.controller.js" />
+    <Content Include="fitnessApp\tickets\tickets.route.js" />
+    <Content Include="fitnessApp\tickets\tickets.template.html" />
+    <Content Include="fitnessApp\tickets\dialog\ticketDialog.controller.js" />
+    <Content Include="fitnessApp\tickets\dialog\ticketDialog.template.html" />
+    <Content Include="fitnessApp\tickets\tickets.module.js" />
     <Content Include="index.html" />
     <Content Include="packages.config" />
     <Content Include="package.json" />

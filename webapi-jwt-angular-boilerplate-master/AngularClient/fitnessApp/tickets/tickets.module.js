@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('app.movies', [
+    angular.module('app.tickets', [
 
     ]);
 
