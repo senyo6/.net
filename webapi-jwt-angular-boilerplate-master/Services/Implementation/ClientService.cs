@@ -27,22 +27,6 @@ namespace Services.Implementation
         {
             using (var scope = _contextScopeFactory.CreateReadOnly ())
             {
-                return _repository.GetAllActive ().ToList ().Select (x => new ClientModel
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    PhoneNumber = x.PhoneNumber,
-                    Email = x.Email,
-                    Address = x.Address,
-                    JoinDate = x.JoinDate
-                });
-            }
-        }
-
-        public IEnumerable<ClientModel> MapperGetAll ()
-        {
-            using (var scope = _contextScopeFactory.CreateReadOnly ())
-            {
                 var objects = _repository.GetAllActive ().ToList ();
                 var ClientModels = _mapper.Map<List<ClientModel>> (objects);
                 return ClientModels;

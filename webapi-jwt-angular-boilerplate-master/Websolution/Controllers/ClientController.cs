@@ -18,17 +18,9 @@ namespace Websolution.Controllers
 
         [HttpGet]
         [Route ("get")]
-        public IHttpActionResult ReadAll ()
-        {
-            var models = _service.GetAll ();
-            return Ok (models);
-        }
-
-        [HttpGet]
-        [Route ("mapperget")]
         public IHttpActionResult ReadAllMapped ()
         {
-            var models = _service.MapperGetAll ();
+            var models = _service.GetAll ();
             return Ok (models);
         }
 
