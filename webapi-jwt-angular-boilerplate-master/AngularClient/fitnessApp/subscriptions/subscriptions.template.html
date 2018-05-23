@@ -18,8 +18,8 @@
             </thead>
             <tbody>
                 <tr ng-repeat="clientTicket in vm.clientTickets" ng-class="{'red-background': (clientTicket.remainedEntryCount <= 0)}">
-                    <td>{{clientTicket.clientId}}</td>
-                    <td>{{clientTicket.ticketId}}</td>
+                    <td>{{clientTicket.client.name}}</td>
+                    <td>{{clientTicket.ticket.name}}</td>
                     <td>{{clientTicket.purchaseDate | date:'yyyy.M.dd'}}</td>
                     <td>{{clientTicket.remainedEntryCount}}</td>
                     <td>

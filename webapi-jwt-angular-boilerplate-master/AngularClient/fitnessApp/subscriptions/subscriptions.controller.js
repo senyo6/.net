@@ -11,7 +11,7 @@
         vm.clientTickets = [];
 
         vm.getClientTickets = function () {
-            ClientTicketService.getClientTickets().then(function (response) {
+            ClientTicketService.getClientTicketsDetailed().then(function (response) {
                 vm.clientTickets = response.data;
             }, function (error) {
                 // Handle

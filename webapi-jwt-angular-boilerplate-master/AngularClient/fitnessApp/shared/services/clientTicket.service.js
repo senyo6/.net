@@ -16,6 +16,12 @@
             });
         }
 
+        var getClientTicketsDetailed = function () {
+            return $http.get(serviceBase + 'api/clientticket/getdetailed').then(function (clientTickets) {
+                return clientTickets;
+            });
+        }
+
         var addNewClientTicket = function (clientTicketModel) {
             return $http.post(serviceBase + 'api/clientticket/create', clientTicketModel).then(function (newClientTicket) {
                 return newClientTicket;
@@ -35,6 +41,7 @@
         }
 
         ClientTicketServiceFactory.getClientTickets = getClientTickets;
+        ClientTicketServiceFactory.getClientTicketsDetailed = getClientTicketsDetailed;
         ClientTicketServiceFactory.addNewClientTicket = addNewClientTicket;
         ClientTicketServiceFactory.updateClientTicket = updateClientTicket;
         ClientTicketServiceFactory.deleteClientTicket = deleteClientTicket;
