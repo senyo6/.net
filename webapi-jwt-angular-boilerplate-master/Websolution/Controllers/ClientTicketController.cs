@@ -32,6 +32,14 @@ namespace Websolution.Controllers
             return Ok (model);
         }
 
+        [HttpGet]
+        [Route ("getjoined")]
+        public IHttpActionResult ReadAllDetailed ()
+        {
+            var models = _service.GetAllDetailed ();
+            return Ok (models);
+        }
+
         [HttpPost]
         [Route ("create")]
         public IHttpActionResult Create (ClientTicketModel model)

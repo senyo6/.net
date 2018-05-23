@@ -13,6 +13,8 @@ namespace Services.Implementation
     public class ClientTicketService : IClientTicketService
     {
         private readonly IClientTicketRepository _repository;
+        private readonly IClientRepository _clientRepository;
+        private readonly ITicketRepository _ticketRepository;
         private readonly IMapper _mapper;
         private readonly IDbContextScopeFactory _contextScopeFactory;
 
@@ -30,6 +32,48 @@ namespace Services.Implementation
                 var objects = _repository.GetAllActive ().ToList ();
                 var models = _mapper.Map<List<ClientTicketModel>> (objects);
                 return models;
+            }
+        }
+
+        public IEnumerable<ClientTicketModel> GetAllDetailed ()
+        {
+            using (var scope = _contextScopeFactory.Create ())
+            {
+                var clientTickets = _repository.GetAllActive ().ToList ();
+                var clients = _clientRepository.GetAllActive ().ToList ();
+                var tickets = _ticketRepository.GetAllActive ().ToList ();
+                var data = from clientTicket in clientTickets
+                             join client in clients
+                             on clientTicket.ClientId equals client.Id
+                             join ticket in tickets
+                             on clientTicket.TicketId equals ticket.Id
+                             select new ClientTicketModel
+                             {
+                                 Id = clientTicket.Id,
+                                 ClientId = client.Id,
+                                 Client = new ClientModel
+                                 {
+                                     Id = client.Id,
+                                     Name = client.Name,
+                                     PhoneNumber = client.PhoneNumber,
+                                     Email = client.Email,
+                                     Address = client.Address,
+                                     JoinDate = client.JoinDate
+                                 },
+                                 TicketId = ticket.Id,
+                                 Ticket = new TicketModel
+                                 {
+                                     Id = ticket.Id,
+                                     Name = ticket.Name,
+                                     Price = ticket.Price,
+                                     EntryCount = ticket.EntryCount,
+                                     ValidityDayCount = ticket.ValidityDayCount,
+                                     Description = ticket.Description
+                                 },
+                                 PurchaseDate = clientTicket.PurchaseDate,
+                                 RemainedEntryCount = clientTicket.RemainedEntryCount
+                             };
+                return data.ToList ();
             }
         }
 
