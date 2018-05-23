@@ -5,6 +5,7 @@ using Repositories.Interface;
 using Services.Interface;
 using Services.ServiceModels;
 using AutoMapper;
+using System;
 
 namespace Services.Implementation
 {
@@ -93,6 +94,23 @@ namespace Services.Implementation
                            };
 
                 return data.ToList();
+            }
+        }
+
+        public bool UseTicket(int clientTicketId)
+        {
+            using (var scope = _contextScopeFactory.Create())
+            {
+                var clientTicket = _repository.GetById(clientTicketId);
+                var ticket = _ticketRepository.GetById(clientTicket.TicketId);
+                if (clientTicket.RemainingEntries > 0 && (clientTicket.PurchaseDate.AddDays(ticket.ValidityDayCount) >= DateTime.Now))
+                {
+                    clientTicket.RemainingEntries -= 1;
+                    _repository.Edit(clientTicket);
+                    _repository.Save();
+                    return true;
+                }
+                return false;
             }
         }
 

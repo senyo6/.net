@@ -1,0 +1,44 @@
+﻿<div class="jumbotron text-center">
+    <h1>Manage Tickets</h1>
+</div>
+
+<div class="container" style="padding-bottom: 15px;">
+    <div class="row col-md-12">
+        <div class="form-group">
+            <select class="form-control" ng-model="vm.selectedClient" ng-change="vm.clientSelected()"
+                    ng-options="client.id as client.name for client in vm.clients" name="client"></select>
+        </div>
+    </div>
+    <div class="row col-md-12" ng-if="vm.selectedClient">
+        <table datatable="ng" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Ticket Name</th>
+                    <th>Entries (Total/Remaining)</th>
+                    <th>Valid between</th>
+                    <th>Actions</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr ng-repeat="clientTicket in vm.ticketsOfClient" ng-class="{'red-background': (clientTicket.remainingEntries <= 0) || (vm.now >= clientTicket.endDate)}">
+                    <th>{{clientTicket.id}}</th>
+                    <td>{{clientTicket.ticket.name}}</td>
+                    <td>{{clientTicket.ticket.entryCount}} / {{clientTicket.remainingEntries}}</td>
+                    <td>
+                        {{clientTicket.purchaseDate | date:'yyyy.M.dd'}} - {{clientTicket.endDate | date:'yyyy.M.dd'}} ({{clientTicket.ticket.validityDayCount}} days)
+                    </td>
+                    <td>
+                        <button class="btn btn-success" type="button" ng-click="vm.useTicket(clientTicket.id)" ng-disabled="(clientTicket.remainingEntries <= 0) || (vm.now >= clientTicket.endDate)">
+                            Use Ticket
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row col-md-12 text-center" ng-if="!vm.selectedClient">
+        <h3>Please Select a Client</h3>
+    </div>
+</div>

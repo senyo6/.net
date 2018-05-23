@@ -11,6 +11,7 @@
         'app.clients',
         'app.tickets',
         'app.subscriptions',
+        'app.useTickets',
         'app.directives'
     ]);
 

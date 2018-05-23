@@ -64,6 +64,18 @@ namespace Websolution.Controllers
             return Ok (newModel);
         }
 
+        [HttpPost]
+        [Route("useTicket")]
+        public IHttpActionResult UseTicket(int clientTicketId)
+        {
+            var useTicketIfPossible = _service.UseTicket(clientTicketId);
+            if (useTicketIfPossible)
+            {
+                return Ok("Ticket Used");
+            }
+            return Ok("Ticket could not be used");
+        }
+
         [HttpDelete]
         [Route ("delete")]
         public IHttpActionResult Delete (int id)

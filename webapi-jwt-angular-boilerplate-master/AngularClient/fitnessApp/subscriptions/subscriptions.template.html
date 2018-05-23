@@ -17,11 +17,11 @@
 
             </thead>
             <tbody>
-                <tr ng-repeat="clientTicket in vm.clientTickets" ng-class="{'red-background': (clientTicket.remainedEntryCount <= 0)}">
+                <tr ng-repeat="clientTicket in vm.clientTickets">
                     <td>{{clientTicket.client.name}}</td>
                     <td>{{clientTicket.ticket.name}}</td>
                     <td>{{clientTicket.purchaseDate | date:'yyyy.M.dd'}}</td>
-                    <td>{{clientTicket.remainedEntryCount}}</td>
+                    <td>{{clientTicket.remainingEntries}}</td>
                     <td>
                         <button class="btn btn-danger" type="button" ng-click="vm.deleteClientTicket(clientTicket.id)">
                             <i class="fa fa-trash-o" aria-hidden="true"></i>

@@ -12,5 +12,6 @@ namespace Services.Interface
         IEnumerable<ClientTicketModel> GetAll ();
         IEnumerable<ClientTicketDetailModel> GetAllDetailed ();
         IEnumerable<ClientTicketDetailModel> GetTicketsOfClientDetailed(int clientId);
+        bool UseTicket(int clientTicketId);
     }
 }

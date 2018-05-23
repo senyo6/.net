@@ -33,12 +33,11 @@
 
     vm.setEntry = function (id) {
         if (!vm.clientTicket.id) {
-            vm.clientTicket.remainedEntryCount = vm.ticketMap[id].entryCount;
+            vm.clientTicket.remainingEntries = vm.ticketMap[id].entryCount;
         }
     };
 
     vm.save = function () {
-        console.log(vm.myForm);
         if (vm.myForm.$valid) {
             if (vm.clientTicket.id == undefined) {
                 vm.clientTicket.purchaseDate = new Date();

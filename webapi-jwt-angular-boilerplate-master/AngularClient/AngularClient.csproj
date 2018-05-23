@@ -114,6 +114,10 @@
     <Content Include="fitnessApp\tickets\dialog\ticketDialog.controller.js" />
     <Content Include="fitnessApp\tickets\dialog\ticketDialog.template.html" />
     <Content Include="fitnessApp\tickets\tickets.module.js" />
+    <Content Include="fitnessApp\useTickets\useTickets.controller.js" />
+    <Content Include="fitnessApp\useTickets\useTickets.module.js" />
+    <Content Include="fitnessApp\useTickets\useTickets.route.js" />
+    <Content Include="fitnessApp\useTickets\useTickets.template.html" />
     <Content Include="index.html" />
     <Content Include="packages.config" />
     <Content Include="package.json" />
