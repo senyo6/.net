@@ -37,26 +37,10 @@ namespace Services.Implementation
         {
             using (var scope = _contextScopeFactory.Create())
             {
-                var entity = new Ticket
-                {
-                    IsDeleted = false,
-                    Name = model.Name,
-                    Price = model.Price,
-                    EntryCount = model.EntryCount,
-                    ValidityDayCount = model.ValidityDayCount,
-                    Description = model.Description
-                };
+                var entity = _mapper.Map<Ticket> (model);
                 _repository.Add(entity);
                 _repository.Save();
-                return new TicketModel
-                {
-                    Id = entity.Id,
-                    Name = entity.Name,
-                    Price = entity.Price,
-                    EntryCount = entity.EntryCount,
-                    ValidityDayCount = entity.ValidityDayCount,
-                    Description = entity.Description
-                };
+                return model;
             }
         }
 
@@ -72,15 +56,7 @@ namespace Services.Implementation
                 entity.Description = model.Description;
                 _repository.Edit(entity);
                 _repository.Save();
-                return new TicketModel
-                {
-                    Id = entity.Id,
-                    Name = entity.Name,
-                    Price = entity.Price,
-                    EntryCount = entity.EntryCount,
-                    ValidityDayCount = entity.ValidityDayCount,
-                    Description = entity.Description
-                };
+                return _mapper.Map<TicketModel> (entity);
             }
         }
 
@@ -98,15 +74,7 @@ namespace Services.Implementation
             using (var scope = _contextScopeFactory.CreateReadOnly())
             {
                 var entity = _repository.GetById(id);
-                return new TicketModel
-                {
-                    Id = entity.Id,
-                    Name = entity.Name,
-                    Price = entity.Price,
-                    EntryCount = entity.EntryCount,
-                    ValidityDayCount = entity.ValidityDayCount,
-                    Description = entity.Description
-                };
+                return _mapper.Map<TicketModel> (entity);
             }
         }
     }

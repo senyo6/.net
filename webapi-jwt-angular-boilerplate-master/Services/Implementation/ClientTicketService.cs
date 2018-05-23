@@ -61,7 +61,7 @@ namespace Services.Implementation
                                  TicketId = ticket.Id,
                                  Ticket = _mapper.Map<TicketModel>(ticket),
                                  PurchaseDate = clientTicket.PurchaseDate,
-                                 RemainedEntryCount = clientTicket.RemainedEntryCount
+                                 RemainingEntries = clientTicket.RemainingEntries
                              };
 
                 return data.ToList ();
@@ -87,7 +87,7 @@ namespace Services.Implementation
                 entity.ClientId = model.ClientId;
                 entity.TicketId = model.TicketId;
                 entity.PurchaseDate = model.PurchaseDate;
-                entity.RemainedEntryCount = model.RemainedEntryCount;
+                entity.RemainingEntries = model.RemainingEntries;
                 _repository.Edit (entity);
                 _repository.Save ();
                 return _mapper.Map<ClientTicketModel>(entity);

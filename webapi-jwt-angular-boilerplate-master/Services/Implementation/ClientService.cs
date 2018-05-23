@@ -37,26 +37,10 @@ namespace Services.Implementation
         {
             using (var scope = _contextScopeFactory.Create ())
             {
-                var entity = new Client
-                {
-                    IsDeleted = false,
-                    Name = model.Name,
-                    PhoneNumber = model.PhoneNumber,
-                    Email = model.Email,
-                    Address = model.Address,
-                    JoinDate = model.JoinDate
-                };
+                var entity = _mapper.Map <Client> (model);
                 _repository.Add (entity);
                 _repository.Save ();
-                return new ClientModel
-                {
-                    Id = entity.Id,
-                    Name = entity.Name,
-                    PhoneNumber = entity.PhoneNumber,
-                    Email = entity.Email,
-                    Address = entity.Address,
-                    JoinDate = entity.JoinDate
-                };
+                return model;
             }
         }
 
@@ -72,15 +56,7 @@ namespace Services.Implementation
                 entity.JoinDate = model.JoinDate;
                 _repository.Edit (entity);
                 _repository.Save ();
-                return new ClientModel
-                {
-                    Id = entity.Id,
-                    Name = entity.Name,
-                    PhoneNumber = entity.PhoneNumber,
-                    Email = entity.Email,
-                    Address = entity.Address,
-                    JoinDate = entity.JoinDate
-                };
+                return _mapper.Map<ClientModel> (entity);
             }
         }
 
@@ -98,15 +74,7 @@ namespace Services.Implementation
             using (var scope = _contextScopeFactory.CreateReadOnly ())
             {
                 var entity = _repository.GetById (id);
-                return new ClientModel
-                {
-                    Id = entity.Id,
-                    Name = entity.Name,
-                    PhoneNumber = entity.PhoneNumber,
-                    Email = entity.Email,
-                    Address = entity.Address,
-                    JoinDate = entity.JoinDate
-                };
+                return _mapper.Map <ClientModel> (entity);
             }
         }
     }
