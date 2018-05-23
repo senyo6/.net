@@ -20,11 +20,15 @@
         if (vm.client.id == undefined) {
             ClientService.addNewClient(vm.client).then(function (response) {
                 $uibModalInstance.close({ response: response });
+            }, function (error) {
+                // Handle
             });
         }
         else {
             ClientService.updateClient(vm.client).then(function (response) {
                 $uibModalInstance.close({ response: response });
+            }, function (error) {
+                // Handle
             });
         }
     };

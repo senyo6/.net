@@ -13,6 +13,8 @@
         vm.getTickets = function () {
             TicketService.getTickets().then(function (response) {
                 vm.tickets = response.data;
+            }, function (error) {
+                // Handle
             });
         }
 
@@ -55,8 +57,9 @@
         vm.deleteTicket = function (ticketId) {
             TicketService.deleteTicket(ticketId).then(function (response) {
                 vm.getTickets();
+            }, function (error) {
+                // Handle
             });
-
         }
     }
 })();

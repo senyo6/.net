@@ -13,6 +13,8 @@
         vm.getClients = function () {
             ClientService.getClients().then(function (response) {
                 vm.clients = response.data;
+            }, function (error) {
+                // Handle
             });
         }
 
@@ -55,8 +57,9 @@
         vm.deleteClient = function (clientId) {
             ClientService.deleteClient(clientId).then(function (response) {
                 vm.getClients();
+            }, function (error) {
+                // Handle
             });
-
         }
     }
 })();
