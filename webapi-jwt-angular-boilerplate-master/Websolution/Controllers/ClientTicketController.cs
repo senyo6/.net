@@ -40,6 +40,14 @@ namespace Websolution.Controllers
             return Ok (models);
         }
 
+        [HttpGet]
+        [Route("getticketsofclient")]
+        public IHttpActionResult GetTicketsOfClient(int clientId)
+        {
+            var models = _service.GetTicketsOfClientDetailed(clientId);
+            return Ok(models);
+        }
+
         [HttpPost]
         [Route ("create")]
         public IHttpActionResult Create (ClientTicketModel model)

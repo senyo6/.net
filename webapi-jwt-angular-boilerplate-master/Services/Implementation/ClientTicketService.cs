@@ -68,6 +68,34 @@ namespace Services.Implementation
             }
         }
 
+        public IEnumerable<ClientTicketDetailModel> GetTicketsOfClientDetailed(int clientId)
+        {
+            using (var scope = _contextScopeFactory.Create())
+            {
+                var clientTickets = _repository.GetAllActive().ToList();
+                var clients = _clientRepository.GetAllActive().ToList();
+                var tickets = _ticketRepository.GetAllActive().ToList();
+                var data = from clientTicket in clientTickets
+                           .Where(clientTicket => clientTicket.ClientId == clientId)
+                           join client in clients
+                           on clientTicket.ClientId equals client.Id
+                           join ticket in tickets
+                           on clientTicket.TicketId equals ticket.Id
+                           select new ClientTicketDetailModel
+                           {
+                               Id = clientTicket.Id,
+                               ClientId = client.Id,
+                               Client = _mapper.Map<ClientModel>(client),
+                               TicketId = ticket.Id,
+                               Ticket = _mapper.Map<TicketModel>(ticket),
+                               PurchaseDate = clientTicket.PurchaseDate,
+                               RemainingEntries = clientTicket.RemainingEntries
+                           };
+
+                return data.ToList();
+            }
+        }
+
         public ClientTicketModel Add (ClientTicketModel model)
         {
             using (var scope = _contextScopeFactory.Create ())
