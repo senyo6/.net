@@ -13,5 +13,5 @@ public class ClientTicket : Entity
     public Ticket Ticket { get; set; }
 
     public DateTime PurchaseDate { get; set; }
-    public int RemainedEntryCount { get; set; }
+    public int RemainingEntries { get; set; }
 }
