@@ -183,6 +183,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Base\BaseApiController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\ClientTicketController.cs" />
     <Compile Include="Controllers\TicketController.cs" />
     <Compile Include="Controllers\ExternalApiController.cs" />
     <Compile Include="Controllers\FileController.cs" />

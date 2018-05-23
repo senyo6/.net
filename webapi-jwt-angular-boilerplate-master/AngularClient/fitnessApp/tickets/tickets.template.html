@@ -8,6 +8,7 @@
         <table datatable="ng" class="table table-bordered">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Name</th>
                     <th>Price</th>
                     <th>Entry Count</th>
@@ -19,6 +20,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="ticket in vm.tickets">
+                    <th>{{ticket.id}}</th>
                     <td>{{ticket.name}}</td>
                     <td>{{ticket.price}}</td>
                     <td>{{ticket.entryCount}}</td>

@@ -17,7 +17,6 @@
     };
 
     vm.save = function () {
-        vm.client.clientTypeId = 1;
         if (vm.client.id == undefined) {
             ClientService.addNewClient(vm.client).then(function (response) {
                 $uibModalInstance.close({ response: response });

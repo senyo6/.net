@@ -10,6 +10,7 @@
         'app.home',
         'app.clients',
         'app.tickets',
+        'app.subscriptions',
         'app.directives'
     ]);
 

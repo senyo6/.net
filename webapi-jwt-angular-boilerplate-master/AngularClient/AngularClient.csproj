@@ -100,7 +100,14 @@
     <Content Include="fitnessApp\shared\routing\router.config.js" />
     <Content Include="fitnessApp\shared\blocks\authentication\authentication.service.js" />
     <Content Include="fitnessApp\shared\services\client.service.js" />
+    <Content Include="fitnessApp\shared\services\clientTicket.service.js" />
     <Content Include="fitnessApp\shared\services\ticket.service.js" />
+    <Content Include="fitnessApp\subscriptions\dialog\subscriptionDialog.controller.js" />
+    <Content Include="fitnessApp\subscriptions\dialog\subscriptionDialog.template.html" />
+    <Content Include="fitnessApp\subscriptions\subscriptions.controller.js" />
+    <Content Include="fitnessApp\subscriptions\subscriptions.module.js" />
+    <Content Include="fitnessApp\subscriptions\subscriptions.route.js" />
+    <Content Include="fitnessApp\subscriptions\subscriptions.template.html" />
     <Content Include="fitnessApp\tickets\tickets.controller.js" />
     <Content Include="fitnessApp\tickets\tickets.route.js" />
     <Content Include="fitnessApp\tickets\tickets.template.html" />
@@ -122,6 +129,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="fitnessApp\shared\css\main.css" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
