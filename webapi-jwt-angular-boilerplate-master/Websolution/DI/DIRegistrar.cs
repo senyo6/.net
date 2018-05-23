@@ -15,7 +15,7 @@ namespace Websolution.DI
         public static void RegisterRepositories(ContainerBuilder builder)
         {
             //registers all repositories inside Repositories.Implementation namespace, manual registration can also be done
-            builder.RegisterAssemblyTypes(typeof(MovieRepository).Assembly)
+            builder.RegisterAssemblyTypes(typeof(ClientRepository).Assembly)
              .Where(x => x.Namespace != null && x.Namespace.EndsWith("Repositories.Implementation"))
              .AsImplementedInterfaces();
            
@@ -23,7 +23,7 @@ namespace Websolution.DI
 
         public static void RegisterServices(ContainerBuilder builder)
         {
-            builder.RegisterAssemblyTypes(typeof(MovieService).Assembly)
+            builder.RegisterAssemblyTypes(typeof(ClientService).Assembly)
                 .Where(x => x.Namespace != null && x.Namespace.EndsWith("Services.Implementation"))
                 .AsImplementedInterfaces();
         }

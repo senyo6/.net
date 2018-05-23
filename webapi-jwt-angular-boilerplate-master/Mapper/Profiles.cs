@@ -11,20 +11,10 @@ namespace Mapper
         {
             return new List<Profile>
             {
-              new MovieProfile(),
               new ClientProfile(),
               new TicketProfile(),
               new ClientTicketProfile()
             };
-        }
-    }
-
-    public class MovieProfile : Profile
-    {
-        public MovieProfile()
-        {
-            CreateMap<Movie, MovieModel>();
-            CreateMap<MovieModel, Movie>();
         }
     }
 

@@ -74,7 +74,6 @@
   <ItemGroup>
     <Compile Include="Entities\Client.cs" />
     <Compile Include="Entities\ClientTicket.cs" />
-    <Compile Include="Entities\MovieType.cs" />
     <Compile Include="Entities\Ticket.cs" />
     <Compile Include="Entities\TrackableEntity.cs" />
     <Compile Include="Entity.cs" />
@@ -104,9 +103,12 @@
     <Compile Include="Migrations\201805232128024_RemainedEntryCount-renamed-to-RemainingEntries.Designer.cs">
       <DependentUpon>201805232128024_RemainedEntryCount-renamed-to-RemainingEntries.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805232304564_removed-movies.cs" />
+    <Compile Include="Migrations\201805232304564_removed-movies.Designer.cs">
+      <DependentUpon>201805232304564_removed-movies.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="FitnessDbContext.cs" />
-    <Compile Include="Entities\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805232128024_RemainedEntryCount-renamed-to-RemainingEntries.resx">
       <DependentUpon>201805232128024_RemainedEntryCount-renamed-to-RemainingEntries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805232304564_removed-movies.resx">
+      <DependentUpon>201805232304564_removed-movies.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

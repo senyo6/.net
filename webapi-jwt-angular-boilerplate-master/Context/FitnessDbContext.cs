@@ -73,8 +73,6 @@ namespace Context
             return identityName;
         }
 
-        public DbSet<Movie> Movies { get; set; }
-        public DbSet<MovieType> MiveiTypes { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<ClientTicket> ClientTickets { get; set; }

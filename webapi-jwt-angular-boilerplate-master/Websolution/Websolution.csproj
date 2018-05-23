@@ -185,9 +185,6 @@
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\ClientTicketController.cs" />
     <Compile Include="Controllers\TicketController.cs" />
-    <Compile Include="Controllers\ExternalApiController.cs" />
-    <Compile Include="Controllers\FileController.cs" />
-    <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="DI\DIRegistrar.cs" />
     <Compile Include="Factories\ModelFactory.cs" />
     <Compile Include="Global.asax.cs">
