@@ -33,7 +33,7 @@ namespace Websolution.Controllers
         }
 
         [HttpGet]
-        [Route ("getjoined")]
+        [Route ("getdetailed")]
         public IHttpActionResult ReadAllDetailed ()
         {
             var models = _service.GetAllDetailed ();

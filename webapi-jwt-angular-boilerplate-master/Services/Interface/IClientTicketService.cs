@@ -10,6 +10,6 @@ namespace Services.Interface
         void Delete (int id);
         ClientTicketModel GetById (int id);
         IEnumerable<ClientTicketModel> GetAll ();
-        IEnumerable<ClientTicketModel> GetAllDetailed ();
+        IEnumerable<ClientTicketDetailModel> GetAllDetailed ();
     }
 }

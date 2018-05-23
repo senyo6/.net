@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Ambient.Context.Interfaces;
-using Context.Entities;
 using Repositories.Interface;
 using Services.Interface;
 using Services.ServiceModels;
@@ -18,10 +17,17 @@ namespace Services.Implementation
         private readonly IMapper _mapper;
         private readonly IDbContextScopeFactory _contextScopeFactory;
 
-        public ClientTicketService (IClientTicketRepository repository, IMapper mapper, IDbContextScopeFactory contextScopeFactory)
-        {
-            _repository = repository;
+        public ClientTicketService(
+            IMapper mapper, 
+            ITicketRepository ticketRepository,
+            IClientTicketRepository repository, 
+            IClientRepository clientRepository,
+            IDbContextScopeFactory contextScopeFactory
+        ) {
             _mapper = mapper;
+            _repository = repository;
+            _clientRepository = clientRepository;
+            _ticketRepository = ticketRepository;
             _contextScopeFactory = contextScopeFactory;
         }
 
@@ -35,7 +41,7 @@ namespace Services.Implementation
             }
         }
 
-        public IEnumerable<ClientTicketModel> GetAllDetailed ()
+        public IEnumerable<ClientTicketDetailModel> GetAllDetailed ()
         {
             using (var scope = _contextScopeFactory.Create ())
             {
@@ -47,32 +53,17 @@ namespace Services.Implementation
                              on clientTicket.ClientId equals client.Id
                              join ticket in tickets
                              on clientTicket.TicketId equals ticket.Id
-                             select new ClientTicketModel
+                             select new ClientTicketDetailModel
                              {
                                  Id = clientTicket.Id,
                                  ClientId = client.Id,
-                                 Client = new ClientModel
-                                 {
-                                     Id = client.Id,
-                                     Name = client.Name,
-                                     PhoneNumber = client.PhoneNumber,
-                                     Email = client.Email,
-                                     Address = client.Address,
-                                     JoinDate = client.JoinDate
-                                 },
+                                 Client = _mapper.Map<ClientModel>(client),
                                  TicketId = ticket.Id,
-                                 Ticket = new TicketModel
-                                 {
-                                     Id = ticket.Id,
-                                     Name = ticket.Name,
-                                     Price = ticket.Price,
-                                     EntryCount = ticket.EntryCount,
-                                     ValidityDayCount = ticket.ValidityDayCount,
-                                     Description = ticket.Description
-                                 },
+                                 Ticket = _mapper.Map<TicketModel>(ticket),
                                  PurchaseDate = clientTicket.PurchaseDate,
                                  RemainedEntryCount = clientTicket.RemainedEntryCount
                              };
+
                 return data.ToList ();
             }
         }
@@ -81,28 +72,10 @@ namespace Services.Implementation
         {
             using (var scope = _contextScopeFactory.Create ())
             {
-                var entity = new ClientTicket
-                {
-                    IsDeleted = false,
-                    ClientId = model.ClientId,
-                    Client = model.Client,
-                    TicketId = model.TicketId,
-                    Ticket = model.Ticket,
-                    PurchaseDate = model.PurchaseDate,
-                    RemainedEntryCount = model.RemainedEntryCount
-                };
+                var entity = _mapper.Map<ClientTicket>(model);
                 _repository.Add (entity);
                 _repository.Save ();
-                return new ClientTicketModel
-                {
-                    Id = entity.Id,
-                    ClientId = entity.ClientId,
-                    Client = entity.Client,
-                    TicketId = entity.TicketId,
-                    Ticket = entity.Ticket,
-                    PurchaseDate = entity.PurchaseDate,
-                    RemainedEntryCount = entity.RemainedEntryCount
-                };
+                return model;
             }
         }
 
@@ -112,23 +85,12 @@ namespace Services.Implementation
             {
                 var entity = _repository.GetById (model.Id);
                 entity.ClientId = model.ClientId;
-                entity.Client = model.Client;
                 entity.TicketId = model.TicketId;
-                entity.Ticket = model.Ticket;
                 entity.PurchaseDate = model.PurchaseDate;
                 entity.RemainedEntryCount = model.RemainedEntryCount;
                 _repository.Edit (entity);
                 _repository.Save ();
-                return new ClientTicketModel
-                {
-                    Id = entity.Id,
-                    ClientId = entity.ClientId,
-                    Client = entity.Client,
-                    TicketId = entity.TicketId,
-                    Ticket = entity.Ticket,
-                    PurchaseDate = entity.PurchaseDate,
-                    RemainedEntryCount = entity.RemainedEntryCount
-                };
+                return _mapper.Map<ClientTicketModel>(entity);
             }
         }
 
@@ -146,15 +108,7 @@ namespace Services.Implementation
             using (var scope = _contextScopeFactory.CreateReadOnly ())
             {
                 var entity = _repository.GetById (id);
-                return new ClientTicketModel
-                {
-                    ClientId = entity.ClientId,
-                    Client = entity.Client,
-                    TicketId = entity.TicketId,
-                    Ticket = entity.Ticket,
-                    PurchaseDate = entity.PurchaseDate,
-                    RemainedEntryCount = entity.RemainedEntryCount
-                };
+                return _mapper.Map<ClientTicketModel>(entity);
             }
         }
     }
